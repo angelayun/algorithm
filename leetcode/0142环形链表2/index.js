@@ -31,12 +31,6 @@ var detectCycle = function (head) {
 
   return fast;
 };
-
-// 下面是测试数据
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
 /* let p1 = new ListNode(3);
 let p2 = new ListNode(2);
 let p3 = new ListNode(0);

@@ -26,11 +26,6 @@ var getKthFromEnd = function (head, k) {
   }
   return p1;
 };
-
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
 // 下面是测试数据
 let p1 = new ListNode(1);
 let p2 = new ListNode(2);

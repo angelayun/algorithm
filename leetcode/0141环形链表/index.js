@@ -5,10 +5,6 @@
  *     this.next = null;
  * }
  */
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
 // 快慢指针是一种思路
 // 最先想到的方式应该是使用hashtable的方式把每个节点存储下来，访问一个节点的时候判断是否在hashtable里面存在相同结点
 // https://leetcode-cn.com/u/chen-feng-11/
