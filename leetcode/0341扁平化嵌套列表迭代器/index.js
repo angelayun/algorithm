@@ -27,10 +27,14 @@
 function dfs(nestedInteger) {
   // 按照js 语法应该是下面这段
   const res = [];
+  // 如果是数字
   if (Number.isInteger(nestedInteger)) {
+    // 将数字推入res
     res.push(nestedInteger);
   } else {
+    // 遍历nestedList，child是当前子元素
     for (let child of nestedInteger) {
+      // 递归展平，推入res
       res.push(...dfs(child));
     }
   }
@@ -51,9 +55,13 @@ function dfs(nestedInteger) {
  * @param {NestedInteger[]} nestedList
  */
 var NestedIterator = function (nestedList) {
+  // 存放展平后的数字
   this.nums = [];
+  // index是当前Next调用应该返回的第index个数
   this.index = 0;
+  // 遍历nestedList
   for (let node of nestedList) {
+    // 当前的元素 展平后的数字 推入nums
     this.nums.push(...dfs(node));
   }
 };
@@ -63,6 +71,7 @@ var NestedIterator = function (nestedList) {
  * @returns {boolean}
  */
 NestedIterator.prototype.hasNext = function () {
+  // 是否还能获取到元素，取决于index是否越了nums的界
   return this.index < this.nums.length;
 };
 
@@ -71,13 +80,6 @@ NestedIterator.prototype.hasNext = function () {
  * @returns {integer}
  */
 NestedIterator.prototype.next = function () {
+  // 更新index
   return this.nums[this.index++];
 };
-
-/**
- * Your NestedIterator will be called like this:
- * var i = new NestedIterator(nestedList), a = [];
- * while (i.hasNext()) a.push(i.next());
- */
-
-//  let vals=
