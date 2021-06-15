@@ -6,7 +6,7 @@ var minArray = function (numbers) {
   let left = 0,
     right = numbers.length - 1;
   while (left < right) {
-    let middle = left + ~~((right - left) >> 1);
+    let middle = left + ((right - left) >> 1);
     if (numbers[middle] > numbers[right]) left = middle + 1;
     else if (numbers[middle] < numbers[right]) right = middle;
     else right--;
