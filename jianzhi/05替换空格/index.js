@@ -16,8 +16,8 @@ var replaceSpace = function (s) {
     }
     ++i;
   }
-  let newLength = s.length + numberOfBlank * 2;
-  let indexOfOrigin = s.length;
+  let newLength = s.length - 1 + numberOfBlank * 2;
+  let indexOfOrigin = s.length - 1;
   let indexOfNew = newLength;
   while (indexOfOrigin >= 0 && indexOfNew > indexOfOrigin) {
     if (s[indexOfOrigin] == " ") {
@@ -31,6 +31,6 @@ var replaceSpace = function (s) {
   }
   return s.join("");
 };
-// let s = "We are happy.";
-let s = "";
+let s = "We are happy.";
+// let s = "";
 console.log(replaceSpace(s));

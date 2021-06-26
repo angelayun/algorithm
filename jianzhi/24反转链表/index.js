@@ -11,7 +11,7 @@
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  // pre 前面一个节点，反转之后是尾节点  所以默认指向空
+  /* // pre 前面一个节点，反转之后是尾节点  所以默认指向空
   let pre = null;
   // 当前节点  第一次指向头节点
   let cur = head;
@@ -22,7 +22,15 @@ var reverseList = function (head) {
     pre = cur;
     cur = nxt;
   }
-  return pre;
+  return pre; */
+  // 下面这样确实也可以
+  /* if (head == null || head.next == null) {
+    return head;
+  }
+  let cur = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return cur; */
 };
 let p1 = new ListNode(1);
 let p2 = new ListNode(2);

@@ -4,6 +4,7 @@
  * @return {number}
  */
 var findMedianSortedArrays = function (nums1, nums2) {
+  // 入参的这俩数组是正序数组
   // 确保nums1长度比nums2小
   if (nums1.length > nums2.length) {
     return findMedianSortedArrays(nums2, nums1);
