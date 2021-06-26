@@ -14,20 +14,15 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 var mergeKLists = function (lists) {
-  let result = [];
-  let len = lists.length;
-  let min, minIndex;
-
-  for (let index = 0; index < len; index++) {
-    let cur = lists[index][0];
-    if (cur != undefined && (min == undefined || cur < min)) {
-      min = cur;
-      minIndex = index;
-    }
-  }
-  let minValue = lists[minIndex].splice(0, 1);
-  result.push(minValue);
-  // Math.min(arr)
+  return lists
+    .reduce((p, n) => {
+      while (n) {
+        p.push(n), (n = n.next);
+      }
+      return p;
+    }, [])
+    .sort((a, b) => a.val - b.val)
+    .reduceRight((p, n) => ((n.next = p), (p = n), p), null);
 };
 let lists = [
   [1, 4, 5],
