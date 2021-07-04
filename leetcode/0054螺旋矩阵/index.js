@@ -1,20 +1,33 @@
+// https://leetcode-cn.com/problems/spiral-matrix/solution/shou-hui-tu-jie-liang-chong-bian-li-de-ce-lue-kan-/
+
 /**
  * @param {number[][]} matrix
  * @return {number[]}
  */
 var spiralOrder = function (matrix) {
-  let list = [];
-  if (!matrix || !matrix.length || !matrix[0].length) {
-    return list;
+  if (matrix.length === 0) return [];
+  const res = [];
+  let top = 0,
+    bottom = matrix.length - 1,
+    left = 0,
+    right = matrix[0].length - 1;
+  while (top < bottom && left < right) {
+    for (let i = left; i < right; i++) res.push(matrix[top][i]); // 上层
+    for (let i = top; i < bottom; i++) res.push(matrix[i][right]); // 右层
+    for (let i = right; i > left; i--) res.push(matrix[bottom][i]); // 下层
+    for (let i = bottom; i > top; i--) res.push(matrix[i][left]); // 左层
+    right--;
+    top++;
+    bottom--;
+    left++; // 四个边界同时收缩，进入内层
   }
-  // 行数
-  let m = matrix.length;
-  // 列数
-  let n = matrix[0].length;
-  // 层数， 取决于行列的较小值
-  let size = (Math.min(m, n) + 1) / 2;
-  for (let i = 0; i < size; i++) {}
-  // TODO
+  if (top === bottom)
+    // 剩下一行，从左到右依次添加
+    for (let i = left; i <= right; i++) res.push(matrix[top][i]);
+  else if (left === right)
+    // 剩下一列，从上到下依次添加
+    for (let i = top; i <= bottom; i++) res.push(matrix[i][left]);
+  return res;
 };
 let matrix = [
   [1, 2, 3],

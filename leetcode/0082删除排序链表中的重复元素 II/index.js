@@ -10,15 +10,20 @@
  * @return {ListNode}
  */
 var deleteDuplicates = function (head) {
+  // 肯定不会出现重复 返回原链
   if (head == null || head.next == null) {
     return head;
   }
+  // 当前结点值==下一结点值
   if (head.val == head.next.val) {
+    // 推进head
     while (head.next != null && head.val == head.next.val) {
       head = head.next;
     }
+    // 此时head.Val属于重复的节点值，抛弃，从Next开始递归
     return deleteDuplicates(head.next);
   } else {
+    // 当前结点值!=下一结点值，对head.Next进行整理，head接上整理后的链
     head.next = deleteDuplicates(head.next);
     return head;
   }

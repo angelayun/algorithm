@@ -1,3 +1,4 @@
+// https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/solution/shou-hua-tu-jie-cong-ling-yi-ge-jiao-du-2rnzg/
 /**
  * @param {string} preorder
  * @return {boolean}

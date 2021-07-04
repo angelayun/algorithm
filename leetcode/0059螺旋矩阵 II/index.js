@@ -15,26 +15,22 @@ var generateMatrix = function (n) {
   while (num <= n * n) {
     // 上边  从左到右
     for (let i = left; i <= right; i++) {
-      matrix[top][i] = num;
-      num++;
+      matrix[top][i] = num++;
     }
     top++;
     // 右边 从上到下
     for (let i = top; i <= bottom; i++) {
-      matrix[i][right] = num;
-      num++;
+      matrix[i][right] = num++;
     }
     right--;
     // 下边 从右到左
     for (let i = right; i >= left; i--) {
-      matrix[bottom][i] = num;
-      num++;
+      matrix[bottom][i] = num++;
     }
     bottom--;
     // 左边  从下到上
     for (let i = bottom; i >= top; i--) {
-      matrix[i][left] = num;
-      num++;
+      matrix[i][left] = num++;
     }
     left++;
   }

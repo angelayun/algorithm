@@ -21,7 +21,7 @@ var reverseBetween = function (head, left, right) {
   let p1 = dummyHead,
     p2 = dummyHead;
   left--;
-  // p1 p2 指针走m步
+  // p1 p2 指针走left-1步
   while (count < left) {
     p1 = p1.next;
     p2 = p2.next;
