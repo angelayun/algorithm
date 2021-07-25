@@ -79,9 +79,62 @@ function sort(nums) {
   }
   return nums;
 }
+// 鸡尾酒排序的优化版本
+function sort(nums) {
+  let tmp = 0;
+  //记录右侧最后一次交换的位置
+  let lastRightExchangeIndex = 0;
+
+  //记录左侧最后一次交换的位置
+  let lastLeftExchangeIndex = 0;
+
+  //无序数列的右边界，每次比较只需要比到这里为止
+  let rightSortBorder = nums.length - 1;
+
+  //无序数列的左边界，每次比较只需要比到这里为止
+  let leftSortBorder = 0;
+  // 第一层控制轮数
+  for (let i = 0; i < nums.length / 2; i++) {
+    // 有序标识，每一轮的初始值都是true
+    let isSorted = true;
+    //奇数轮，从左向右比较和交换
+    for (let j = leftSortBorder; j < rightSortBorder; j++) {
+      // 每一个都与它后面相邻的元素比较
+      if (nums[j] > nums[j + 1]) {
+        [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+        // 有元素交换，所以不是有效的  标记变为false
+        isSorted = false;
+        lastRightExchangeIndex = j;
+      }
+    }
+    rightSortBorder = lastRightExchangeIndex;
+    if (isSorted) {
+      break;
+    }
+    //偶数轮之前，重新标记为true
+    isSorted = true;
+    //偶数轮，从右向左比较和交换
+    for (let j = rightSortBorder; j > leftSortBorder; j--) {
+      if (nums[j] < nums[j - 1]) {
+        [nums[j], nums[j - 1]] = [nums[j - 1], nums[j]];
+        //有元素交换，所以不是有序，标记变为false
+        isSorted = false;
+        lastLeftExchangeIndex = j;
+      }
+    }
+    leftSortBorder = lastLeftExchangeIndex;
+    if (isSorted) {
+      break;
+    }
+  }
+  return nums;
+}
 var nums = [5, 8, 6, 3, 9, 2, 1, 7];
 sort(nums);
 console.log(nums);
 var array1 = [3, 4, 2, 1, 5, 6, 7, 8];
 sort(array1);
 console.log(array1);
+var arr = [2, 3, 4, 5, 6, 7, 8, 1];
+sort(arr);
+console.log(arr);
